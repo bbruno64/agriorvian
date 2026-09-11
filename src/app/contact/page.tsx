@@ -85,18 +85,27 @@ export default function ContactPage() {
       return;
     }
 
-    setStatus("submitting");
-    const submission = {
-      ...form,
-      submittedAt: new Date().toISOString(),
-    };
-    console.log("[AgriOrvian Contact Submission]", submission);
-    window.setTimeout(() => {
-      setStatus("success");
-      toast.success("Message received!", {
-        description: `Your message has been forwarded to export@agriorvian.com. A trade manager will respond within one business day.`,
-      });
-    }, 900);
+    setStatus("success");
+    const subject = `AgriOrvian inquiry from ${form.name}`;
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      form.subject ? `Subject: ${form.subject}` : "",
+      "",
+      form.message,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    // Compose in the visitor's own email app: nothing is sent to, or stored
+    // by, this website. The message travels directly to export@agriorvian.com.
+    const mailtoUrl = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
+    toast.success("Your email app is opening", {
+      description: `A message addressed to ${CONTACT.email} is ready in your mail app. Press send to deliver it.`,
+    });
   };
 
   const handleReset = () => {
@@ -136,7 +145,7 @@ export default function ContactPage() {
               <a
                 href={c.href}
                 target={c.href.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-emerald-700 transition-colors hover:text-emerald-900"
               >
                 {c.cta} <ExternalLink className="h-3.5 w-3.5" />
@@ -158,11 +167,13 @@ export default function ContactPage() {
                   <Mail className="h-7 w-7 text-white" />
                 </div>
                 <p className="mt-4 text-lg font-semibold text-emerald-900">
-                  Message received!
+                  Thanks {form.name || "for contacting us"} — your email draft
+                  is ready
                 </p>
                 <p className="mt-1 text-sm text-emerald-700">
-                  Thank you {form.name || "for contacting us"}. A trade manager
-                  will reach out shortly.
+                  Your email app has opened with a message addressed to{" "}
+                  {CONTACT.email}. Press <em>send</em> in your mail app to
+                  deliver it, or write to us directly if it didn&apos;t open.
                 </p>
                 <Button
                   variant="outline"
@@ -296,7 +307,7 @@ export default function ContactPage() {
                 <a
                   href={`https://wa.me/${CONTACT.whatsappNumber}`}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="font-semibold underline underline-offset-2"
                 >
                   WhatsApp Business widget

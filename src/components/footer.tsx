@@ -79,8 +79,8 @@ export function Footer() {
               <a
                 href={`https://wa.me/${CONTACT.whatsappNumber}`}
                 target="_blank"
-                rel="noreferrer"
-                aria-label="WhatsApp"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp (opens in new tab)"
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-amber-500 transition-colors"
               >
                 <WhatsAppIcon className="h-4 w-4" />
@@ -116,16 +116,35 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">
-          <p className="text-xs text-emerald-100/50">
-            © {new Date().getFullYear()} AgriOrvian — A Division of Orvian Company Limited. All rights reserved.
-          </p>
-          <Link
-            href="/quote"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-400 hover:text-amber-300"
-          >
-            Start an inquiry <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
+              <p className="text-xs text-emerald-100/50">
+                © {new Date().getFullYear()} AgriOrvian — A Division of Orvian Company Limited. All rights reserved.
+              </p>
+              <div className="flex items-center gap-3 text-xs">
+                <Link
+                  href="/privacy"
+                  className="text-emerald-100/60 transition-colors hover:text-amber-300"
+                >
+                  Privacy Policy
+                </Link>
+                <span className="text-white/20">·</span>
+                <Link
+                  href="/terms"
+                  className="text-emerald-100/60 transition-colors hover:text-amber-300"
+                >
+                  Terms of Use
+                </Link>
+              </div>
+            </div>
+            <Link
+              href="/quote"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-400 hover:text-amber-300"
+            >
+              Start an inquiry <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
