@@ -1,7 +1,7 @@
 export type Category =
   | "Produce"
   | "Nuts & Seeds"
-  | "Seafood"
+  | "Fisheries & Aquaculture"
   | "Grains & Spices";
 
 export type ShippingMethod = "Air Freight" | "Sea Freight" | "Reefer" | "Mix";
@@ -34,7 +34,7 @@ export interface Commodity {
 export const commodityCategories: Category[] = [
   "Produce",
   "Nuts & Seeds",
-  "Seafood",
+"Fisheries & Aquaculture",
   "Grains & Spices",
 ];
 
@@ -63,83 +63,8 @@ export const commodities: Commodity[] = [
     minOrder: "1 × 20ft reefer (approx. 9.6 MT)",
     icon: "leaf",
     image:
-      "https://images.unsplash.com/photo-1726177551991-270f9e79b65e?q=80&w=1000&auto=format&fit=crop",
+      "/commodities/avocados.jpg",
     featured: true,
-  },
-  {
-    id: "pineapples",
-    name: "Pineapples (Smooth Cayenne)",
-    category: "Produce",
-    tagline: "Sweet, golden air and sea freight grades",
-    description:
-      "Vibrant, juicy Smooth Cayenne pineapples from coastal and Morogoro farms, offered in both air-freight premium and sea-freight reefer grades for the Middle East and European markets.",
-    hsCode: "0804.50",
-    origin: "Coastal & Morogoro regions",
-    grades: ["Air-Freight Premium", "Sea-Freight Reefer"],
-    specs: [
-      { label: "Weight", value: "1.2–2.2 kg" },
-      { label: "Brix", value: "12°+ at harvest" },
-      { label: "Cold Chain", value: "7–8°C" },
-      { label: "Color", value: "Shell 2 / 3 (25–50%)" },
-    ],
-    packaging: ["Cartons 8–12 pcs", "Master cartons with gel-ice"],
-    shipping: ["Air Freight", "Sea Freight"],
-    certifications: ["Phytosanitary (TAPHIS)", "GlobalGAP"],
-    shelfLife: "21 days under reefer",
-    minOrder: "1,000 kg air / 1 × 20ft reefer",
-    icon: "pinecone",
-    image:
-      "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?q=80&w=1000&auto=format&fit=crop",
-  },
-  {
-    id: "mangoes",
-    name: "Mangoes (Kent & Sensation)",
-    category: "Produce",
-    tagline: "Aromatic, fiberless export grades",
-    description:
-      "Export-grade Kent and Sensation mangoes grown in the lowland regions, selected for uniform maturity and handled with hot-water treatment and cold chain to reach global retail shelves in peak condition.",
-    hsCode: "0804.50",
-    origin: "Tanga, Coast, Ruvu",
-    grades: ["Kent", "Sensation", "Air & Sea grades"],
-    specs: [
-      { label: "Weight", value: "350–650 g" },
-      { label: "Maturity", value: "Color break + %SSC" },
-      { label: "Cold Chain", value: "10–12°C" },
-      { label: "Treatment", value: "Hot water dip / VHT" },
-    ],
-    packaging: ["Cartons 4–6 pcs", "Single-layer trays"],
-    shipping: ["Air Freight", "Sea Freight", "Reefer"],
-    certifications: ["Phytosanitary (TAPHIS)", "GlobalGAP"],
-    shelfLife: "14–18 days",
-    minOrder: "1,000 kg air / 1 × 20ft reefer",
-    icon: "citrus",
-    image:
-      "https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=1000&auto=format&fit=crop",
-  },
-  {
-    id: "passion-fruit",
-    name: "Passion Fruit",
-    category: "Produce",
-    tagline: "High-acidity purple hybrid for juice & concentrate",
-    description:
-      "Vibrant purple passion fruit with intense aroma and balanced acidity, ideal for fresh juice, concentrate, and beverage processors across Europe and the Middle East.",
-    hsCode: "0810.90",
-    origin: "Ruvuma, Iringa, Kagera",
-    grades: ["Fresh export", "Processing grade"],
-    specs: [
-      { label: "Diameter", value: "5–7 cm" },
-      { label: "Acidity", value: "3.0–4.5%" },
-      { label: "Brix", value: "14–16°" },
-      { label: "Cold Chain", value: "7–10°C" },
-    ],
-    packaging: ["Cartons 2–5 kg", "Bulk bins for processing"],
-    shipping: ["Air Freight", "Sea Freight"],
-    certifications: ["Phytosanitary (TAPHIS)"],
-    shelfLife: "10–14 days",
-    minOrder: "500 kg air",
-    icon: "flame",
-    image:
-      "https://images.unsplash.com/photo-1546548970-71785318a17b?q=80&w=1000&auto=format&fit=crop",
   },
   {
     id: "cashew-rcn",
@@ -147,7 +72,7 @@ export const commodities: Commodity[] = [
     category: "Nuts & Seeds",
     tagline: "High-outturn Tunduru & Newala origin",
     description:
-      "Premium raw cashew nuts with excellent outturn and low moisture, sourced from Tanzania's southern cashew belt (Tunduru, Newala, Masasi) — the world's trusted RCN origin for India and Vietnam processing.",
+      "Premium raw cashew nuts with excellent outturn and low moisture, sourced from Tanzania's southern cashew belt (Tunduru, Newala, Masasi), the world's trusted RCN origin for India and Vietnam processing.",
     hsCode: "0801.31",
     origin: "Tunduru, Newala, Masasi",
     grades: ["Outturn 48–53 lbs"],
@@ -163,8 +88,7 @@ export const commodities: Commodity[] = [
     shelfLife: "12 months (dry storage)",
     minOrder: "1 × 20ft (approx. 18 MT)",
     icon: "nut",
-    image:
-      "https://images.unsplash.com/photo-1573555657105-47a0bb37c3ea?q=80&w=1000&auto=format&fit=crop",
+    image: "/commodities/cashew-rcn.jpeg",
     featured: true,
   },
   {
@@ -190,7 +114,7 @@ export const commodities: Commodity[] = [
     minOrder: "1 × 20ft (approx. 14 MT)",
     icon: "nut",
     image:
-      "https://images.unsplash.com/photo-1594900689460-fdad3599342c?q=80&w=1000&auto=format&fit=crop",
+      "/commodities/cashew-kernels.jpg",
     featured: true,
   },
   {
@@ -216,7 +140,7 @@ export const commodities: Commodity[] = [
     minOrder: "1 × 20ft (approx. 20 MT)",
     icon: "seed",
     image:
-      "https://images.unsplash.com/photo-1708949125682-c0cb09727101?q=80&w=1000&auto=format&fit=crop",
+      "/commodities/sesame.jpg",
     featured: true,
   },
   {
@@ -242,15 +166,15 @@ export const commodities: Commodity[] = [
     minOrder: "1 × 20ft",
     icon: "sunflower",
     image:
-      "https://images.unsplash.com/photo-1740993384743-dc8f2879f398?q=80&w=1000&auto=format&fit=crop",
+      "/commodities/sunflower.jpg",
   },
   {
     id: "nile-perch",
-    name: "Lake Victoria Nile Perch",
-    category: "Seafood",
+    name: "Nile Perch (Lates niloticus)",
+    category: "Fisheries & Aquaculture",
     tagline: "Fresh & frozen, IQF skin-on/skinless fillets",
     description:
-      "World-renowned Nile Perch from Lake Victoria, processed at HACCP-certified facilities into fresh and IQF fillets (skin-on, skinless, PBO/PBI) for European foodservice and retail programs.",
+      "The flagship catch of Lake Victoria's multi-species fishery, processed at HACCP-certified facilities into fresh and IQF fillets (skin-on, skinless, PBO/PBI) for European foodservice and retail programs.",
     hsCode: "0304.83",
     origin: "Lake Victoria (Mwanza, Mara, Kagera)",
     grades: ["Fresh fillets", "Frozen IQF", "PBO / PBI"],
@@ -267,21 +191,22 @@ export const commodities: Commodity[] = [
     minOrder: "1,000 kg air / 1 × 40ft reefer",
     icon: "fish",
     image:
-      "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1000&auto=format&fit=crop",
+      "/commodities/nile-perch.jpg",
     featured: true,
   },
   {
     id: "tilapia",
-    name: "Tilapia & Sea-Catch",
-    category: "Seafood",
-    tagline: "Whole fish & fillets, master carton delivery",
+    name: "Tilapia & Dagaa (Silver Sardine)",
+    category: "Fisheries & Aquaculture",
+    tagline: "Whole tilapia, fillets & protein-rich silver sardines",
     description:
-      "Freshwater tilapia and selected sea-catch commodities, packed in master cartons with gel-ice thermal lining for reliable cold-chain delivery across African and Middle Eastern markets.",
+      "Lake Victoria is a multi-species fishery. Beyond Nile perch, we supply wild and pond-grown tilapia plus dagaa, the lake's silver sardine prized across East and Central Africa, packed in master cartons with gel-ice thermal lining for reliable cold-chain delivery across African and Middle Eastern markets.",
     hsCode: "0302.83 / 0303.23",
-    origin: "Lake Victoria, coastal fisheries",
-    grades: ["Whole (various sizes)", "Fillets", "Sea-catch mix"],
+    origin: "Lake Victoria (Mwanza, Mara, Kagera)",
+    grades: ["Whole tilapia (various sizes)", "Tilapia fillets", "Dagaa (silver sardine)"],
     specs: [
-      { label: "Size", value: "150g – 1kg+ whole" },
+      { label: "Tilapia size", value: "150g – 1kg+ whole" },
+      { label: "Dagaa format", value: "Sun-dried / fresh-frozen" },
       { label: "Temperature", value: "0–2°C fresh" },
       { label: "Packaging", value: "Gel-ice lined cartons" },
     ],
@@ -292,7 +217,7 @@ export const commodities: Commodity[] = [
     minOrder: "500 kg",
     icon: "waves",
     image:
-      "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?q=80&w=1000&auto=format&fit=crop",
+      "/commodities/tilapia.jpg",
   },
   {
     id: "maize",
@@ -317,7 +242,7 @@ export const commodities: Commodity[] = [
     minOrder: "1 × 20ft (approx. 21 MT)",
     icon: "wheat",
     image:
-      "https://images.unsplash.com/photo-1551754655-cd27e38d2076?q=80&w=1000&auto=format&fit=crop",
+      "/commodities/maize.jpg",
   },
   {
     id: "pulses",
@@ -325,7 +250,7 @@ export const commodities: Commodity[] = [
     category: "Grains & Spices",
     tagline: "Pigeon peas, chickpeas, kidney & mung beans",
     description:
-      "A full portfolio of food-grade pulses — pigeon peas, chickpeas, red kidney beans, and green mung beans — cleaned, graded, and color-sorted for the Indian subcontinent and global markets.",
+      "A full portfolio of food-grade pulses: pigeon peas, chickpeas, red kidney beans, and green mung beans, cleaned, graded, and color-sorted for the Indian subcontinent and global markets.",
     hsCode: "0713.31 / 0713.10 / 0713.33 / 0713.32",
     origin: "Southern highlands & central Tanzania",
     grades: ["Machine-clean 99%", "Sortex 99.5%"],
@@ -342,11 +267,11 @@ export const commodities: Commodity[] = [
     minOrder: "1 × 20ft",
     icon: "bean",
     image:
-      "https://images.unsplash.com/photo-1515543904379-3d757afe72e4?q=80&w=1000&auto=format&fit=crop",
+      "/commodities/pulses.jpg",
   },
   {
     id: "coffee",
-    name: "Green Coffee Beans",
+    name: "Coffee",
     category: "Grains & Spices",
     tagline: "Washed Arabica & Robusta specialty lots",
     description:
@@ -367,7 +292,7 @@ export const commodities: Commodity[] = [
     minOrder: "1 × 20ft (approx. 20 MT)",
     icon: "coffee",
     image:
-      "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?q=80&w=1000&auto=format&fit=crop",
+      "/commodities/coffee.jpg",
     featured: true,
   },
   {
@@ -376,7 +301,7 @@ export const commodities: Commodity[] = [
     category: "Grains & Spices",
     tagline: "Organic cloves, pepper, cardamom, cinnamon, vanilla",
     description:
-      "World-famous Zanzibar spices — organic cloves, black pepper, cardamom, cinnamon, and hand-cured vanilla — sourced from island spice farms and graded for leading spice houses and premium food brands.",
+      "World-famous Zanzibar spices: organic cloves, black pepper, cardamom, cinnamon, and hand-cured vanilla, sourced from island spice farms and graded for leading spice houses and premium food brands.",
     hsCode: "0907–0910 / 0904.21",
     origin: "Zanzibar & Pemba",
     grades: ["Organic certified", "Whole & ground"],
@@ -393,7 +318,7 @@ export const commodities: Commodity[] = [
     minOrder: "250 kg",
     icon: "flame",
     image:
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=1000&auto=format&fit=crop",
+      "/commodities/zanzibar-spices.jpg",
   },
   {
     id: "tobacco-tea",
@@ -417,7 +342,7 @@ export const commodities: Commodity[] = [
     minOrder: "1 × 20ft",
     icon: "sprout",
     image:
-      "https://images.unsplash.com/photo-1649779117064-107e63b88758?q=80&w=1000&auto=format&fit=crop",
+      "/commodities/tobacco-tea.jpg",
   },
 ];
 

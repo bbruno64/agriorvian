@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ComponentType } from "react";
 import {
   MapPin,
   Phone,
   Mail,
-  MessageCircle,
   Clock,
   Send,
   Building2,
@@ -18,15 +17,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { WhatsAppWidget } from "@/components/whatsapp-widget";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { CONTACT } from "@/data/site";
 
-const contactChannels = [
+const contactChannels: Array<{
+  icon: ComponentType<{ className?: string }>;
+  title: string;
+  value: string;
+  note: string;
+  href: string;
+  cta: string;
+}> = [
   {
-    icon: MessageCircle,
+    icon: WhatsAppIcon,
     title: "WhatsApp Business",
     value: CONTACT.phone,
-    note: "Fastest response — trade manager online",
+    note: "Fastest response from a live trade manager",
     href: `https://wa.me/${CONTACT.whatsappNumber}`,
     cta: "Chat now",
   },
@@ -175,6 +181,7 @@ export default function ContactPage() {
                       id="name"
                       name="name"
                       required
+                      autoComplete="name"
                       value={form.name}
                       onChange={handleChange}
                       placeholder="Your name"
@@ -190,6 +197,7 @@ export default function ContactPage() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="you@company.com"
+                      autoComplete="email"
                     />
                   </div>
                 </div>
@@ -299,8 +307,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      <WhatsAppWidget />
     </div>
   );
 }

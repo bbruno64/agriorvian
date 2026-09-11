@@ -44,8 +44,18 @@ export function CommodityCard({ commodity }: { commodity: Commodity }) {
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.3 }}
         whileHover={{ y: -4 }}
-        className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-xl"
+        role="button"
+        tabIndex={0}
+        aria-haspopup="dialog"
+        aria-label={`View full specifications for ${commodity.name}`}
         onClick={() => setOpen(true)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setOpen(true);
+          }
+        }}
+        className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring hover:shadow-xl"
       >
         <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
           <CommodityImage

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send } from "lucide-react";
+import { X, Send } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 const TRADE_MANAGER_NAME = "AgriOrvian Trade Desk";
 const WHATSAPP_NUMBER = "255714454774";
@@ -31,7 +32,7 @@ export function WhatsAppWidget() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="w-80 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl"
+            className="w-[calc(100vw-2.5rem)] max-w-xs overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl"
           >
             <div className="bg-emerald-gradient px-4 py-3 text-white">
               <p className="text-sm font-semibold">{TRADE_MANAGER_NAME}</p>
@@ -62,7 +63,7 @@ export function WhatsAppWidget() {
         aria-label="Open WhatsApp chat"
         className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105"
       >
-        {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-7 w-7" />}
+        {open ? <X className="h-6 w-6" /> : <WhatsAppIcon className="h-7 w-7" />}
       </button>
     </div>
   );

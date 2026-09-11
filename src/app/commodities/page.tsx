@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import {
@@ -28,6 +29,7 @@ function ToggleChip({
   return (
     <button
       onClick={onClick}
+      aria-pressed={active}
       className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
         active
           ? "bg-emerald-gradient text-white"
@@ -39,10 +41,25 @@ function ToggleChip({
   );
 }
 
-export default function CommoditiesPage() {
+function CommoditiesPageContent() {
+  const searchParams = useSearchParams();
   const [search, setSearch] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
-  const [selectedShipping, setSelectedShipping] = useState<ShippingMethod[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>(
+    () =>
+      (searchParams.get("category") ?? "")
+        .split(",")
+        .filter((c): c is Category =>
+          (commodityCategories as string[]).includes(c)
+        )
+  );
+  const [selectedShipping, setSelectedShipping] = useState<ShippingMethod[]>(
+    () =>
+      (searchParams.get("shipping") ?? "")
+        .split(",")
+        .filter((s): s is ShippingMethod =>
+          (shippingMethods as string[]).includes(s)
+        )
+  );
 
   const filtered = useMemo(() => {
     return commodities.filter((c) => {
@@ -104,6 +121,7 @@ export default function CommoditiesPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search commodities… (e.g. avocado, sesame, coffee)"
+              aria-label="Search commodities"
               className="h-12 bg-white pl-10"
             />
           </div>
@@ -193,5 +211,25 @@ export default function CommoditiesPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function CommoditiesPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="bg-[#fafaf8]">
+          <section className="bg-emerald-gradient py-14 text-white">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <h1 className="text-3xl font-bold sm:text-4xl">
+                Full Commodities Catalog
+              </h1>
+            </div>
+          </section>
+        </div>
+      }
+    >
+      <CommoditiesPageContent />
+    </Suspense>
   );
 }

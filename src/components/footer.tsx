@@ -4,10 +4,10 @@ import {
   MapPin,
   Phone,
   Mail,
-  MessageCircle,
   ArrowRight,
 } from "lucide-react";
 import { CONTACT } from "@/data/site";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 const footerLinks = {
   Company: [
@@ -17,10 +17,10 @@ const footerLinks = {
     { label: "Contact", href: "/contact" },
   ],
   Products: [
-    { label: "Horticulture & Fresh Produce", href: "/commodities" },
-    { label: "Nuts & Oilseeds", href: "/commodities" },
-    { label: "Seafood & Aquaculture", href: "/commodities" },
-    { label: "Grains, Pulses & Spices", href: "/commodities" },
+    { label: "Horticulture & Fresh Produce", href: "/commodities?category=Produce" },
+    { label: "Nuts & Oilseeds", href: "/commodities?category=Nuts%20%26%20Seeds" },
+    { label: "Fisheries & Aquaculture", href: "/commodities?category=Fisheries%20%26%20Aquaculture" },
+    { label: "Grains, Pulses & Spices", href: "/commodities?category=Grains%20%26%20Spices" },
   ],
   Resources: [
     { label: "Commodities Catalog", href: "/commodities" },
@@ -48,7 +48,7 @@ export function Footer() {
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed">
               East Africa&apos;s direct gateway to high-grade agricultural commodities,
-              nuts &amp; oilseeds, seafood, and spices — backed by a 5-step quality
+              nuts &amp; oilseeds, fisheries, and spices, backed by a 5-step quality
               assurance and cold-chain program from farm to port.
             </p>
             <div className="mt-6 space-y-2 text-sm">
@@ -83,7 +83,7 @@ export function Footer() {
                 aria-label="WhatsApp"
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-amber-500 transition-colors"
               >
-                <MessageCircle className="h-4 w-4" />
+                <WhatsAppIcon className="h-4 w-4" />
               </a>
               <Link
                 href="/"

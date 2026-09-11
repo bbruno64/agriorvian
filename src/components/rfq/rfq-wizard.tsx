@@ -10,13 +10,13 @@ import {
   ChevronLeft,
   ChevronRight,
   FileText,
-  MessageCircle,
   Copy,
   Loader2,
 } from "lucide-react";
 import { toast } from "sonner";
 import { commodities, destinations } from "@/data/commodities";
 import { CONTACT } from "@/data/site";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -53,7 +53,7 @@ const incoterms = [
 ];
 
 const quantityOptions = [
-  "5 MT — Sample / Test Lot",
+  "5 MT · Sample / Test Lot",
   "10 MT",
   "20 MT",
   "1 × 20ft Reefer Container",
@@ -379,6 +379,7 @@ function RfqWizardContent() {
                       value={form.company}
                       onChange={(e) => set("company")(e.target.value)}
                       placeholder="Your company"
+                      autoComplete="organization"
                     />
                   </div>
                   <div className="space-y-2">
@@ -388,6 +389,7 @@ function RfqWizardContent() {
                       value={form.email}
                       onChange={(e) => set("email")(e.target.value)}
                       placeholder="you@company.com"
+                      autoComplete="email"
                     />
                   </div>
                   <div className="space-y-2">
@@ -396,6 +398,7 @@ function RfqWizardContent() {
                       value={form.country}
                       onChange={(e) => set("country")(e.target.value)}
                       placeholder="e.g. United Arab Emirates"
+                      autoComplete="country-name"
                     />
                   </div>
                   <div className="space-y-2">
@@ -405,6 +408,7 @@ function RfqWizardContent() {
                       value={form.phone}
                       onChange={(e) => set("phone")(e.target.value)}
                       placeholder="+Country code number"
+                      autoComplete="tel"
                     />
                   </div>
                 </div>
@@ -514,7 +518,7 @@ function RfqWizardContent() {
               className="h-11 bg-[#25D366] text-white hover:bg-[#1fb857]"
               onClick={handleSendWhatsApp}
             >
-              <MessageCircle className="mr-2 h-5 w-5" /> Send to WhatsApp Trade
+              <WhatsAppIcon className="mr-2 h-5 w-5" /> Send to WhatsApp Trade
               Desk
             </Button>
             <Button

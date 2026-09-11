@@ -41,19 +41,20 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-emerald/95 shadow-sm shadow-black/5 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" aria-label="AgriOrvian – home" className="flex items-center gap-2">
           <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-gradient">
             <Sprout className="h-5 w-5 text-white" />
           </span>
-          <span className="flex flex-col leading-none">
+          <span className="flex flex-col leading-none pt-0.5">
             <span className="text-lg font-bold tracking-tight text-white">AgriOrvian</span>
-            <span className="text-[10px] uppercase tracking-widest text-emerald-100/70">
-              Orvian Co. Ltd · Export
+            <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.14em] text-emerald-100/70">
+              From Our <span className="font-semibold text-amber-300">Farmers</span> to Your{" "}
+              <span className="font-semibold text-amber-300">Markets</span>
             </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-1 xl:flex">
           {mainNav.map((item) => (
             <Link
               key={item.href}
@@ -68,7 +69,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <Button asChild variant="ghost" className="text-white hover:bg-white/10 hover:text-white">
             <Link href="/contact">
               <MessageCircle className="mr-2 h-4 w-4 text-amber-400" />
@@ -81,7 +82,7 @@ export function Navbar() {
         </div>
 
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-md text-white lg:hidden hover:bg-white/10"
+          className="flex h-10 w-10 items-center justify-center rounded-md text-white xl:hidden hover:bg-white/10"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -99,7 +100,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-white/10 bg-emerald-gradient lg:hidden"
+            className="overflow-hidden border-t border-white/10 bg-emerald-gradient xl:hidden"
           >
             <div className="max-h-[calc(100vh-4rem)] space-y-1 overflow-y-auto px-4 py-4">
               {mainNav.map((item) => (

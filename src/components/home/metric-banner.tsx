@@ -42,7 +42,7 @@ export function Counter({
 export function MetricBanner({ stats = liveMetrics }: { stats?: Stat[] }) {
   return (
     <section className="border-b border-slate-200 bg-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px lg:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-slate-200 lg:grid-cols-4">
         {stats.map((stat, i) => (
           <motion.div
             key={stat.label}
@@ -50,7 +50,7 @@ export function MetricBanner({ stats = liveMetrics }: { stats?: Stat[] }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="flex flex-col items-center gap-1 border-slate-200 px-6 py-8 text-center"
+            className="flex flex-col items-center gap-1 bg-white px-6 py-8 text-center"
           >
             <div className="text-3xl font-bold text-emerald-800 lg:text-4xl">
               <Counter value={stat.value} suffix={stat.suffix} />

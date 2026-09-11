@@ -85,7 +85,7 @@ export function CommodityDetailModal({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[92vh] overflow-y-auto p-0 sm:max-w-3xl">
-        <div className="relative aspect-[21/9] w-full overflow-hidden bg-slate-100">
+        <div className="relative aspect-[2/1] w-full overflow-hidden bg-slate-100 sm:aspect-[21/9]">
           <CommodityImage src={commodity.image} alt={commodity.name} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
           <div className="absolute bottom-3 left-6 right-6">

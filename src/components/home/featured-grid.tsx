@@ -35,7 +35,7 @@ export function FeaturedGrid() {
               Featured Commodities
             </motion.h2>
             <p className="mt-3 max-w-xl text-slate-600">
-              A curated selection from our export portfolio — each backed by
+              A curated selection from our export portfolio, each backed by
               full laboratory specs, packaging options, and certification.
             </p>
           </div>

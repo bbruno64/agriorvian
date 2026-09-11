@@ -14,7 +14,7 @@ export function QualityProcess() {
             The AgriOrvian 5-Step Quality Assurance Process
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-emerald-100/80">
-            Every consignment moves through a disciplined, verifiable journey —
+            Every consignment moves through a disciplined, verifiable journey:
             from direct farm sourcing to confirmed vessel loading at port.
           </p>
         </div>

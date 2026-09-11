@@ -29,7 +29,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-1.5 text-sm font-medium text-amber-300 backdrop-blur-sm"
+            className="inline-flex flex-wrap items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-1.5 text-sm font-medium text-amber-300 backdrop-blur-sm"
           >
             <Sparkles className="h-4 w-4" />
             Export Division of Orvian Company Limited · Dar es Salaam
@@ -42,7 +42,7 @@ export function Hero() {
             className="mt-6 text-4xl font-extrabold tracking-tight text-white text-balance sm:text-5xl lg:text-6xl"
           >
             East Africa&apos;s Direct Gateway to High-Grade Agricultural
-            Commodities &amp; Seafood
+            Commodities &amp; Fisheries
           </motion.h1>
 
           <motion.p
@@ -51,10 +51,10 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-6 max-w-2xl text-lg leading-relaxed text-emerald-50/90"
           >
-            Sourcing premium avocados, cashew, sesame, Nile perch, coffee, and
-            Zanzibar spices from trusted Tanzanian farms — delivered with
-            laboratory-verified quality, cold-chain discipline, and timely port
-            clearance to global markets.
+            Sourcing premium avocados, cashew, sesame, Nile perch, tilapia &
+            dagaa, coffee, and Zanzibar spices from trusted Tanzanian farms,
+            delivered with laboratory-verified quality, cold-chain discipline,
+            and timely port clearance to global markets.
           </motion.p>
 
           <motion.div

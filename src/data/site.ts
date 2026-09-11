@@ -13,8 +13,7 @@ export const CONTACT = {
   company: "AgriOrvian — A Division of Orvian Company Limited",
 } as const;
 
-export const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600&auto=format&fit=crop";
+export const HERO_IMAGE = "/hero.jpg";
 
 export const liveMetrics: Stat[] = [
   { label: "Tons Exported", value: 48000, suffix: "+", note: "Across all commodities · annual" },
