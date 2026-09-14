@@ -66,7 +66,7 @@ export default function ContactPage() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (status === "submitting") return;
 
@@ -85,27 +85,34 @@ export default function ContactPage() {
       return;
     }
 
-    setStatus("success");
-    const subject = `AgriOrvian inquiry from ${form.name}`;
-    const body = [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      form.subject ? `Subject: ${form.subject}` : "",
-      "",
-      form.message,
-    ]
-      .filter(Boolean)
-      .join("\n");
-
-    // Compose in the visitor's own email app: nothing is sent to, or stored
-    // by, this website. The message travels directly to export@agriorvian.com.
-    const mailtoUrl = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoUrl;
-    toast.success("Your email app is opening", {
-      description: `A message addressed to ${CONTACT.email} is ready in your mail app. Press send to deliver it.`,
-    });
+    setStatus("submitting");
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/export@agriorvian.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: "New inquiry from the AgriOrvian website",
+          name: form.name,
+          email: form.email,
+          subject: form.subject || "AgriOrvian website inquiry",
+          message: form.message,
+        }),
+      });
+      if (!res.ok) throw new Error("send failed");
+      setForm(initialForm);
+      setStatus("success");
+      toast.success("Message sent", {
+        description: `Your message is on its way to ${CONTACT.email}. We reply within one business day.`,
+      });
+    } catch {
+      setStatus("error");
+      toast.error("Could not send your message", {
+        description: `Check your connection and try again, or email us directly at ${CONTACT.email}.`,
+      });
+    }
   };
 
   const handleReset = () => {
@@ -167,13 +174,12 @@ export default function ContactPage() {
                   <Mail className="h-7 w-7 text-white" />
                 </div>
                 <p className="mt-4 text-lg font-semibold text-emerald-900">
-                  Thanks {form.name || "for contacting us"} — your email draft
-                  is ready
+                  Thanks {form.name || "for contacting us"} — your message has
+                  been sent
                 </p>
                 <p className="mt-1 text-sm text-emerald-700">
-                  Your email app has opened with a message addressed to{" "}
-                  {CONTACT.email}. Press <em>send</em> in your mail app to
-                  deliver it, or write to us directly if it didn&apos;t open.
+                  Your message is on its way to {CONTACT.email}. A trade
+                  manager will respond within one business day.
                 </p>
                 <Button
                   variant="outline"

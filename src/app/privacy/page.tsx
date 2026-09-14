@@ -18,25 +18,26 @@ const sections = [
   {
     title: "We do not collect your data automatically",
     body: [
-      `This website is a static brochure. It contains no cookies, no analytics trackers, no advertising pixels, no embedded third-party scripts, and no forms that submit to a server. We have no account system, no payment processing, and no marketing database built from this site.`,
+      `This website is a static brochure. It contains no cookies, no analytics trackers, no advertising pixels, and no embedded third-party scripts. We have no account system, no payment processing, and no marketing database built from this site.`,
       `When you browse this website, no personal data is stored, transmitted, or shared with us or anyone else. There is therefore nothing to delete, because we receive nothing automatically.`,
     ],
   },
   {
     title: "Data you choose to send us",
     body: [
-      `The only way this site handles your personal information is when you actively contact us, in one of two ways:`,
+      `The only way this site handles your personal information is when you actively contact us, in one of three ways:`,
     ],
     list: [
-      `By email: the site opens your own email application with a pre-filled message addressed to ${CONTACT.email}. The message is sent by you, from your own inbox, and is held in the email system of the recipient.`,
+      `By web form: the contact and quote-request forms on this site are delivered to ${CONTACT.email} through FormSubmit, a third-party processor (formsubmit.co). Your name, email address, phone number, and message are transmitted over HTTPS and forwarded to our mailbox. FormSubmit holds the submission only long enough to deliver it and stores no transaction history.`,
+      `By email: you can also email ${CONTACT.email} directly; your message is held in our email system.`,
       `By WhatsApp: the site links you to WhatsApp so you can message our trade desk. The conversation happens entirely inside WhatsApp and is handled by WhatsApp's operators, not by this website.`,
     ],
-    body2: `Neither of these actions transmits any of your data through this website's servers.`,
+    body2: `Forms are sent over an encrypted HTTPS connection to FormSubmit, which acts as a data processor on our behalf and transfers the submission to our email inbox at ${CONTACT.email}.`,
   },
   {
     title: "How we use your information",
     body: [
-      `Information you send us by email or WhatsApp (for example your name, company, email address, and inquiry details) is used only for the purpose you contacted us for: answering your inquiry, preparing quotations, and conducting business correspondence for AgriOrvian's legitimate B2B export activities. We do not sell, rent, or share your information with third parties, and we never use it for unrelated marketing.`,
+      `Information you send us (for example your name, company, email address, phone number, and inquiry details) is used only for the purpose you contacted us for: answering your inquiry, preparing quotations, and conducting business correspondence for AgriOrvian's legitimate B2B export activities. We do not sell, rent, or share your information with third parties, and we never use it for unrelated marketing. FormSubmit receives your submission solely to deliver it to our inbox.`,
     ],
   },
   {

@@ -14,7 +14,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { toast } from "sonner";
-import { commodities, destinations } from "@/data/commodities";
+import { commodities } from "@/data/commodities";
 import { CONTACT } from "@/data/site";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { Button } from "@/components/ui/button";
@@ -110,33 +110,48 @@ function RfqWizardContent() {
     );
   })();
 
-  const submitProforma = () => {
+  const submitProforma = async () => {
+    if (submitting) return;
     setSubmitting(true);
     const id = generateProformaId();
-    const submission = {
-      proformaId: id,
-      commodity: selectedCommodity?.name ?? form.commodityId,
-      quantity: form.quantity,
-      incoterm: form.incoterm,
-      destinationPort: form.destinationPort,
-      company: form.company,
-      email: form.email,
-      country: form.country,
-      phone: form.phone,
-      notes: form.notes,
-      submittedAt: new Date().toISOString(),
+    const payload = {
+      _subject: `AgriOrvian Proforma Request ${id}`,
+      "Proforma ID": id,
+      Commodity: selectedCommodity?.name ?? form.commodityId,
+      Quantity: form.quantity,
+      Incoterm: form.incoterm,
+      "Destination Port": form.destinationPort,
+      Company: form.company,
+      "Buyer Email": form.email,
+      Country: form.country,
+      "Phone / WhatsApp": form.phone,
+      Notes: form.notes,
     };
-    setRfqId(id);
-    console.log("[AgriOrvian RFQ Submission]", submission);
-    toast.success("Proforma request received", {
-      description: `Your request (${id}) has been forwarded to export@agriorvian.com. A trade manager will respond within one business day.`,
-    });
-
-    window.setTimeout(() => {
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/export@agriorvian.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("send failed");
+      setRfqId(id);
+      toast.success("Proforma request sent", {
+        description: `Your request (${id}) has been emailed to export@agriorvian.com. A trade manager will respond within one business day.`,
+      });
+      window.setTimeout(() => {
+        setSubmitted(true);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 600);
+    } catch {
       setSubmitting(false);
-      setSubmitted(true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 600);
+      toast.error("Could not send your request", {
+        description:
+          "Check your connection and try again, or send it via WhatsApp below.",
+      });
+    }
   };
 
   const next = () => {
@@ -339,24 +354,15 @@ function RfqWizardContent() {
                   </div>
                   <div className="space-y-2">
                     <Label>Target Destination Port</Label>
-                    <Select
+                    <Input
                       value={form.destinationPort}
-                      onValueChange={set("destinationPort")}
-                    >
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Select destination" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {destinations.map((d) => (
-                          <SelectItem
-                            key={d.city}
-                            value={`${d.city}, ${d.country}`}
-                          >
-                            {d.city}, {d.country} ({d.transitDays})
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                      onChange={(e) => set("destinationPort")(e.target.value)}
+                      placeholder="e.g. Hamburg, Germany · Jebel Ali, UAE"
+                      autoComplete="off"
+                    />
+                    <p className="text-xs text-slate-500">
+                      Any port worldwide — we&apos;ll quote the best route.
+                    </p>
                   </div>
                 </div>
               </div>
