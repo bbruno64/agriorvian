@@ -9,7 +9,7 @@ export const CONTACT = {
   email: "export@agriorvian.com",
   phone: "+255714454774",
   whatsappNumber: "255714454774",
-  address: "Nyerere Road, Dar es Salaam, Tanzania",
+  address: "Mbezi Makonde, Dar es Salaam, Tanzania",
   company: "AgriOrvian — A Division of Orvian Company Limited",
 } as const;
 

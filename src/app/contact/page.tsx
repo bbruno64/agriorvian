@@ -257,7 +257,7 @@ export default function ContactPage() {
                 <MapPin className="mx-auto h-10 w-10 text-amber-300" />
                 <p className="mt-2">Dar es Salaam HQ</p>
                 <p className="mt-1 text-sm font-normal text-emerald-100/80">
-                  Nyerere Road · <a href={`mailto:${CONTACT.email}`} className="underline underline-offset-2 hover:text-white">{CONTACT.email}</a>
+                  {CONTACT.address} · <a href={`mailto:${CONTACT.email}`} className="underline underline-offset-2 hover:text-white">{CONTACT.email}</a>
                 </p>
               </div>
             </div>

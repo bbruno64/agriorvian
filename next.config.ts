@@ -17,9 +17,26 @@ const securityHeaders = [
   { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
 ];
 
-// Content-Security-Policy is served by src/proxy.ts (per-request nonce +
-// strict-dynamic) so framework scripts can execute without 'unsafe-inline'.
-// HSTS is production-only; over plain HTTP it is ignored by browsers anyway.
+// Static apps cannot use per-request CSP nonces: the nonce forces every page
+// to be dynamically rendered (server round-trip per navigation). Next.js
+// documents a static CSP instead. Here scripts are locked to same-origin plus
+// Next's inline bootstrap, and SRI hashes pin every bundled JS file. This
+// still blocks all third-party and remote script injection. Applied in
+// production only; dev Turbopack HMR requires eval, so dev serves no CSP.
+const cspHeader = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self'",
+  "connect-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  "manifest-src 'self'",
+  "upgrade-insecure-requests",
+].join("; ");
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -36,6 +53,7 @@ const nextConfig: NextConfig = {
           ...securityHeaders,
           ...(isProduction
             ? [
+                { key: "Content-Security-Policy", value: cspHeader },
                 {
                   key: "Strict-Transport-Security",
                   value: "max-age=63072000; includeSubDomains; preload",

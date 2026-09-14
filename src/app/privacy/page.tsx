@@ -11,7 +11,7 @@ const sections = [
   {
     title: "Who we are",
     body: [
-      `AgriOrvian is a trading name for the export division of Orvian Company Limited ("we", "us", "our"), registered in the United Republic of Tanzania, with operations at Nyerere Road, Dar es Salaam, Tanzania.`,
+      `AgriOrvian is a trading name for the export division of Orvian Company Limited ("we", "us", "our"), registered in the United Republic of Tanzania, with operations at ${CONTACT.address}.`,
       `This policy explains in plain language what we do — and, just as importantly, what we do not do — with the personal information you give us when you use this website.`,
     ],
   },
@@ -60,7 +60,7 @@ const sections = [
   {
     title: "Contact",
     body: [
-      `Questions about this policy or about your personal data can be sent to ${CONTACT.email} or by post to Orvian Company Limited, Nyerere Road, Dar es Salaam, Tanzania.`,
+      `Questions about this policy or about your personal data can be sent to ${CONTACT.email} or by post to Orvian Company Limited, ${CONTACT.address}`,
       `This policy is dated September 2026 and may be updated from time to time; the date of the latest revision will always be shown at the top of this page.`,
     ],
   },

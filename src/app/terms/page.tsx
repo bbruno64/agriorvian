@@ -56,7 +56,7 @@ const sections = [
   {
     title: "Contact",
     body: [
-      `If you have questions about these terms, contact us at ${CONTACT.email} or by post to Orvian Company Limited, Nyerere Road, Dar es Salaam, Tanzania. This page was last revised in September 2026.`,
+      `If you have questions about these terms, contact us at ${CONTACT.email} or by post to Orvian Company Limited, ${CONTACT.address}. This page was last revised in September 2026.`,
     ],
   },
 ] as const;
