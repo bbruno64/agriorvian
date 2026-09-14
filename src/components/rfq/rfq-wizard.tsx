@@ -128,7 +128,7 @@ function RfqWizardContent() {
       Notes: form.notes,
     };
     try {
-      const res = await fetch("https://formsubmit.co/ajax/export@agriorvian.com", {
+      const res = await fetch("https://formsubmit.co/ajax/a89243bcae5b4b1e3257bbfdb42b4b6f", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
