@@ -524,6 +524,296 @@ export const tradeRoutes: TradeRoute[] = [
       "frozen tilapia coastal market",
     ],
   },
+  {
+    slug: "cashew-kernels-to-usa",
+    commodityId: "cashew-kernels",
+    label: "Cashew Kernels to USA",
+    country: "United States",
+    city: "Houston",
+    destinationPort: "Houston, USA",
+    title: "Cashew Kernels to USA — WW Grades from Tanzania",
+    description:
+      "WW180–WW320 cashew kernels vacuum-packed for US retail snack and foodservice programs. Tanzania HACCP plant, SGS verified, shipped Dar es Salaam to Houston.",
+    intro:
+      "The United States is the world's largest buyer of processed cashew kernels, and Texas, California, and East Coast distributors feed a snack market that outsells almonds in several categories. AgriOrvian exports WW, SW, and LWP grades in nitrogen-flushed vacuum tins and barrier bags from our Dar es Salaam facility, sailing from the Port of Dar es Salaam to Houston on the Gulf service in 30–35 days.",
+    demandNotes: [
+      "US retail programs demand consistent whole counts and a light, uniform color — guaranteed by our WW180, WW210, and WW320 grading lines.",
+      "Nitrogen-flushed vacuum tins preserve crunch and shelf life for the long Gulf voyage and months of retail rotation.",
+      "HACCP plant certification, TBS standards, and SGS pre-shipment laboratory results accompany every container for US food-safety compliance.",
+    ],
+    keywords: [
+      "cashew kernels to USA",
+      "cashew wholesaler Houston",
+      "WW180 cashew US distributor",
+      "Tanzania cashew kernel supplier America",
+      "vacuum tin cashew retail snack",
+    ],
+    shipping: {
+      port: "Port of Dar es Salaam",
+      route: "Dar es Salaam → Houston (Gulf service)",
+      transitDays: "30–35 days",
+    },
+  },
+  {
+    slug: "avocados-to-belgium",
+    commodityId: "avocados",
+    marketSlug: "antwerp",
+    label: "Avocados to Belgium",
+    country: "Belgium",
+    city: "Antwerp",
+    destinationPort: "Antwerp, Belgium",
+    title: "Tanzania Avocados to Belgium — Hass & Fuerte CIF Antwerp",
+    description:
+      "Hass & Fuerte avocados caliber 12–24 with >21% dry matter shipped to Antwerp in 25–29 days. Cold-chain packed, TAPHIS + GlobalGAP certified for EU retail.",
+    intro:
+      "Antwerp-Bruges is the EU gateway for fresh-trade reefer cargo, serving Belgian, Dutch, and French ripening and retail programs. AgriOrvian exports Hass and Fuerte avocados from Tanzania's highlands — caliber 12–24, dry matter above 21% — in a 4–6°C reefer chain that lands at Antwerp in 25–29 days with up to 15+ days of shelf life.",
+    demandNotes: [
+      "Antwerp's reefer and ripening infrastructure handles our cold-chain cargo and onward distribution into Benelux and France.",
+      "Belgian importers gain dependable count sizing, dry matter, and controlled-ethylene ripening options.",
+      "GlobalGAP and TAPHIS phytosanitary documentation meet EU plant-health rules for smooth first clearance.",
+    ],
+    keywords: [
+      "avocados to Belgium",
+      "Tanzania avocado Antwerp import",
+      "Hass avocado Benelux supplier",
+      "avocado dry matter EU retail",
+      "CIF Antwerp fresh produce reefer",
+    ],
+  },
+  {
+    slug: "nile-perch-to-germany",
+    commodityId: "nile-perch",
+    marketSlug: "hamburg",
+    label: "Nile Perch to Germany",
+    country: "Germany",
+    city: "Hamburg",
+    destinationPort: "Hamburg, Germany",
+    title: "Nile Perch Fillets to Germany — IQF & Fresh CIF Hamburg",
+    description:
+      "IQF and fresh Nile perch fillets, skin-on & skinless, PBO 10–15%, sizes 80/150–250/500g, from HACCP Lake Victoria plants to Hamburg. Reefers, air freight & full cold chain.",
+    intro:
+      "Germany's foodservice, catering, and retail frozen-fish programs are among Europe's largest whitelist buyers of Nile perch. AgriOrvian exports IQF and fresh fillets — skin-on, skinless, and PBO/PBI — from HACCP-certified Lake Victoria plants, delivering to Hamburg by 40ft reefer or air freight with continuous cold-chain tracking.",
+    demandNotes: [
+      "Hamburg distributes across Norddeutschland and connects to pan-European foodservice logistics for a clean, portion-friendly white fish.",
+      "Consistent fillet sizing (80/150 to 250/500g) and protective PBO glazing match German catering specifications.",
+      "EU-compliant plant certification and full HACCP documentation support retail and foodservice audits.",
+    ],
+    keywords: [
+      "Nile perch to Germany",
+      "IQF white fish Hamburg",
+      "Lake Victoria fillets German foodservice",
+      "PBO glazing fish exporter",
+      "Tanzania seafood Deutschland import",
+    ],
+  },
+  {
+    slug: "coffee-to-netherlands",
+    commodityId: "coffee",
+    marketSlug: "rotterdam",
+    label: "Coffee to Netherlands",
+    country: "Netherlands",
+    city: "Rotterdam",
+    destinationPort: "Rotterdam, Netherlands",
+    title: "Tanzania Coffee Export to Netherlands — Arabica & Robusta",
+    description:
+      "Washed Arabica (AA/AB) and Robusta from Tanzania shipped to Rotterdam in 24–28 days. 82+ SCAA cupping, screen 15–18, in 60kg grain-pro bags.",
+    intro:
+      "Rotterdam is the EU's coffee import gateway, and the Netherlands hosts major roasting and trading houses that move Arabica and Robusta into the European blend market. AgriOrvian exports washed AA, AB, and PB Tanzanian Arabica plus Bukoba Robusta in 60 kg grain-pro bags, landing at Rotterdam in 24–28 days via the Suez route.",
+    demandNotes: [
+      "Tanzanian Arabica's classic flavor profile fits European blend comfort — clean acidity with berry and citrus notes.",
+      "Screen 15–18 and 10.5–11.5% moisture are milled to Amsterdam and Rotterdam roaster intake specs.",
+      "Traceable estate lots plus phytosanitary documentation support the EU's deforestation-free import requirements.",
+    ],
+    keywords: [
+      "coffee to Netherlands",
+      "Tanzania coffee Rotterdam import",
+      "Arabica roaster Netherlands",
+      "Robusta blend buyer Amsterdam",
+      "East African coffee EU gateway",
+    ],
+  },
+  {
+    slug: "cashew-kernels-to-uae",
+    commodityId: "cashew-kernels",
+    marketSlug: "dubai",
+    label: "Cashew Kernels to UAE",
+    country: "United Arab Emirates",
+    city: "Dubai",
+    destinationPort: "Jebel Ali, Dubai, UAE",
+    title: "Cashew Kernels to UAE — WW Grades CIF Jebel Ali",
+    description:
+      "WW & SW cashew kernels in vacuum tins and barrier bags shipped to Dubai in 12–15 days. Tanzania HACCP plant, SGS verified — for Gulf retail and re-export.",
+    intro:
+      "Dubai serves Gulf retail premium-nut channels and re-exports cashew kernels to the Middle East, Africa, and Indian markets from Jebel Ali. AgriOrvian supplies WW, SW, and LWP kernel grades from our Dar es Salaam facility on the 12–15 day route, vacuum-packed in tins and barrier bags for the Gulf climate.",
+    demandNotes: [
+      "Gulf premium retail and airline/travel-retail programs value our consistent whole counts and light color.",
+      "Dubai's free-zone re-export corridors let traders on-sell kernel lots to neighboring GCC and African markets duty-effected.",
+      "Vacuum tin (10 kg) and barrier bag (11.34 kg) formats suit both retail repackers and foodservice distributors.",
+    ],
+    keywords: [
+      "cashew kernels to Dubai",
+      "WW180 cashew UAE re-export",
+      "Tanzania cashew kernel Gulf supplier",
+      "cashew snack wholesaler Jebel Ali",
+      "vacuum tin kernels Middle East",
+    ],
+  },
+  {
+    slug: "coffee-to-uae",
+    commodityId: "coffee",
+    marketSlug: "dubai",
+    label: "Coffee to UAE",
+    country: "United Arab Emirates",
+    city: "Dubai",
+    destinationPort: "Jebel Ali, Dubai, UAE",
+    title: "Tanzania Coffee to UAE — Arabica & Robusta for Dubai Roasters",
+    description:
+      "Washed Arabica (AA/AB/PB) and Robusta from Tanzania shipped to Dubai in 12–15 days. 82+ SCAA lots in 60kg grain-pro bags for UAE roasters and re-export.",
+    intro:
+      "Dubai's café culture has made it the Gulf's coffee hub, with roasters and traders sourcing origin Arabica for UAE specialty retail and for re-export across the region. AgriOrvian exports washed Tanzanian Arabica and Robusta on the fast 12–15 day route, with cupping scores, moisture specs, and full documentation for UAE import.",
+    demandNotes: [
+      "Specialty café chains in Dubai and Abu Dhabi are building menus around washed East African origins — Tanzania cups 82+ cleanly.",
+      "The short Gulf transit protects green-bean condition compared with long-haul origins.",
+      "We supply both full grain-pro bags and role-prepared micro-lots for roasters and single-cup programs.",
+    ],
+    keywords: [
+      "coffee to Dubai",
+      "Tanzania Arabica UAE roaster",
+      "specialty coffee Dubai supplier",
+      "Robusta buyer Gulf coffee trade",
+      "East Africa green beans Jebel Ali",
+    ],
+  },
+  {
+    slug: "pulses-to-uae",
+    commodityId: "pulses",
+    marketSlug: "dubai",
+    label: "Pulses to UAE",
+    country: "United Arab Emirates",
+    city: "Dubai",
+    destinationPort: "Jebel Ali, Dubai, UAE",
+    title: "Pulses to UAE — Pigeon Peas & Beans CIF Jebel Ali",
+    description:
+      "Pigeon peas, chickpeas, kidney & mung beans, machine-clean 99% and Sortex 99.5%, shipped to Dubai in 12–15 days for Gulf retail and re-export trade.",
+    intro:
+      "Dubai's dhul (pulses) market imports big volumes for South-Asian diaspora retail and re-exports to the Gulf and East African markets. AgriOrvian supplies pigeon peas, chickpeas, red kidney beans, and green mung beans — machine-clean 99% and Sortex 99.5% — on the 12–15 day route from Dar es Salaam.",
+    demandNotes: [
+      "South-Asian grocery and retail channels in the GCC are consistent buyers of pigeon peas and chickpeas by the bag lot.",
+      "Dubai's re-export corridors move pulse lots onward to neighboring GCC countries and North Africa.",
+      "Sortex cleaning (admixture under 1%) and clean 25/50 kg PP bags suit wholesale redistributors.",
+    ],
+    keywords: [
+      "pulses to Dubai",
+      "pigeon peas UAE wholesale",
+      "chickpeas Gulf re-export",
+      "Sortex beans Jebel Ali",
+      "Tanzania dhal supplier GCC",
+    ],
+  },
+  {
+    slug: "spices-to-saudi-arabia",
+    commodityId: "zanzibar-spices",
+    marketSlug: "jeddah",
+    label: "Zanzibar Spices to Saudi Arabia",
+    country: "Saudi Arabia",
+    city: "Jeddah",
+    destinationPort: "Jeddah, Saudi Arabia",
+    title: "Zanzibar Spices to Saudi Arabia — Cloves & Cardamom for Gahwa",
+    description:
+      "Organic Zanzibar cloves, cardamom, cinnamon & pepper shipped Tanga to Jeddah in 8-10 days. Whole & ground, Islamic-market ready, organic + SGS certified.",
+    intro:
+      "Saudi coffee culture (gahwa) and spice houses make cloves, cardamom, and cinnamon a staple of the Kingdom's food trade, and the Red Sea route from Tanga gets them there fastest. AgriOrvian exports organically certified Zanzibar spices — 5–9mm hand-cleaned cloves, cardamom pods, cinnamon, and Malabar-type pepper — delivered to Jeddah in just 8–10 days.",
+    demandNotes: [
+      "Jeddah's spice houses pay premiums for whole, hand-cleaned cloves and intact cardamom pods — our grading line protects both.",
+      "The 8–10 day Red Sea transit preserves volatile oils and aroma better than longer-handled Asian spice origins.",
+      "Organic certification and aroma-locked packing serve gahwa blending, bakery, and retail spice programs across the Kingdom.",
+    ],
+    keywords: [
+      "Zanzibar spices to Saudi Arabia",
+      "cloves gahwa Jeddah",
+      "cardamom Saudi spice trade",
+      "organic cinnamon Red Sea supplier",
+      "Zanzibar pepper Kingdom import",
+    ],
+  },
+  {
+    slug: "tilapia-to-uae",
+    commodityId: "tilapia",
+    marketSlug: "dubai",
+    label: "Tilapia to UAE",
+    country: "United Arab Emirates",
+    city: "Dubai",
+    destinationPort: "Jebel Ali, Dubai, UAE",
+    title: "Tilapia to UAE — Fresh & Frozen, Jebel Ali in 12-15 Days",
+    description:
+      "Whole tilapia & fillets plus dagaa shipped from Dar es Salaam to Jebel Ali in 12-15 days. 0-2°C fresh or frozen, gel-ice cartons, HACCP certified for GCC markets.",
+    intro:
+      "Tilapia is the most consumed fish in the Gulf, served across UAE restaurants, hypermarkets, and diaspora retail. AgriOrvian supplies wild and pond-grown tilapia (whole and fillets) plus dagaa from Lake Victoria, delivered to Jebel Ali in 12–15 days — fresh at 0–2°C in gel-ice thermal cartons or frozen.",
+    demandNotes: [
+      "UAE hypermarkets and fish retail run weekly tilapia programs — reliable 12–15 day supply fits their ordering cycle.",
+      "Whole tilapia in 150g–1kg+ sizes suits both table fish and fillet-processor buyers across the Gulf.",
+      "HACCP-certified Lake Victoria processing and cold-chain tracking meet GCC import food-safety rules.",
+    ],
+    keywords: [
+      "tilapia to Dubai",
+      "whole tilapia UAE hypermarket",
+      "fresh fish Jebel Ali supplier",
+      "Lake Victoria tilapia Gulf",
+      "dagaa Tanzania Middle East",
+    ],
+  },
+  {
+    slug: "sunflower-to-china",
+    commodityId: "sunflower",
+    marketSlug: "qingdao",
+    label: "Sunflower to China",
+    country: "China",
+    city: "Qingdao",
+    destinationPort: "Qingdao, China",
+    title: "Tanzania Sunflower Seeds to China — High-Oleic Non-GMO",
+    description:
+      "High-oleic, non-GMO sunflower seeds and crude oil shipped to Qingdao in 26-32 days. Oil content 40-48%, oleic acid ≥75%, in 50kg bags or flexitanks.",
+    intro:
+      "China's edible-oil and confectionery sectors import high-oleic sunflower seed to diversify away from palm and bring oxidative stability to oil blends. AgriOrvian exports non-GMO sunflower seed (confectionary grade) and crude oil from Central Tanzania, loaded at Dar es Salaam for Qingdao in 26–32 days via Singapore.",
+    demandNotes: [
+      "China's food-oil blenders target 40–48% oil content confectionary seed with ≥75% oleic acid for stability.",
+      "Seed travels in 50 kg bags; crude oil in ISO tanks or flexitanks for max landed-cost efficiency to North-China plants.",
+      "Non-GMO certification and SGS pre-shipment testing meet Chinese oilseed import documentation requirements.",
+    ],
+    keywords: [
+      "sunflower to China",
+      "high oleic sunflower Qingdao",
+      "non-GMO oilseed Tanzania export",
+      "sunflower crude oil flexitank China",
+      "confectionary seed North China buyer",
+    ],
+  },
+  {
+    slug: "sesame-to-belgium",
+    commodityId: "sesame",
+    marketSlug: "antwerp",
+    label: "Sesame to Belgium",
+    country: "Belgium",
+    city: "Antwerp",
+    destinationPort: "Antwerp, Belgium",
+    title: "Tanzania Sesame to Belgium — Purity ≥99.5% CIF Antwerp",
+    description:
+      "Natural white & Humera-grade sesame shipped to Antwerp in 25-29 days for EU tahini, bakery & confectionery. ≥99.5% purity, ≥50% oil, PP bags, SGS verified.",
+    intro:
+      "Belgium and the wider Benelux are a core EU market for sesame — feeding tahini, bakery, halva, and confectionery production — with Antwerp as the mainland reefer gateway. AgriOrvian exports natural-white and Humera-grade sesame at ≥99.5% purity and ≥50% oil content, shipped in 25 kg and 50 kg PP bags to Antwerp in 25–29 days.",
+    demandNotes: [
+      "European bakers and tahini mills specify high purity and oil — our ≥99.5% and ≥50% metrics quote directly into their specs.",
+      "Antwerp's grain terminal network handles PP and jumbo-bag sesame for road and barge distribution across the EU.",
+      "SGS pre-shipment verification and EU-compliant phytosanitary documentation ship with every lot.",
+    ],
+    keywords: [
+      "sesame to Belgium",
+      "sesame Antwerp EU importer",
+      "tahini sesame Benelux supplier",
+      "Humera grade seeds CIF Antwerp",
+      "halva sesame wholesaler Europe",
+    ],
+  },
 ];
 
 export function getTradeRouteBySlug(slug: string): TradeRoute | undefined {
