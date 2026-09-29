@@ -1,9 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Anchor, Ship, Clock, Map } from "lucide-react";
+import { Anchor, Ship, Clock, Map, ArrowUpRight } from "lucide-react";
 import { destinations } from "@/data/commodities";
+import { markets } from "@/data/markets";
 import { MotionSection } from "@/lib/motion";
+
+const slugByCity = Object.fromEntries(
+  markets.map((m) => [m.city, m.slug])
+);
 
 const portDetails = [
   { port: "Port of Dar es Salaam", note: "Primary gateway · principal container & reefer hub", via: "38+ weekly sailings" },
@@ -80,8 +86,18 @@ export function Destinations() {
                     </div>
                     <div className="text-xs text-emerald-100/70">{d.country}</div>
                     <div className="mt-2 text-xs text-emerald-100/60">{d.route}</div>
-                    <div className="mt-2 flex items-center gap-1.5 text-xs font-medium text-amber-200">
-                      <Clock className="h-3.5 w-3.5" /> Transit {d.transitDays}
+                    <div className="mt-2 flex items-center justify-between text-xs font-medium text-amber-200">
+                      <span className="inline-flex items-center gap-1.5">
+                        <Clock className="h-3.5 w-3.5" /> Transit {d.transitDays}
+                      </span>
+                      {slugByCity[d.city] && (
+                        <Link
+                          href={`/market/${slugByCity[d.city]}`}
+                          className="inline-flex items-center gap-1 rounded-full bg-amber-500/20 px-2 py-0.5 text-amber-200 transition-colors hover:bg-amber-500/40 hover:text-white"
+                        >
+                          Buy for {d.city} <ArrowUpRight className="h-3 w-3" />
+                        </Link>
+                      )}
                     </div>
                   </motion.div>
                 ))}

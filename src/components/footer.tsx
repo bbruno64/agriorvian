@@ -32,6 +32,7 @@ const footerLinks = {
   ],
   Resources: [
     { label: "Commodities Catalog", href: "/commodities" },
+    { label: "Export Markets", href: "/commodities" },
     { label: "Proforma Quote", href: "/quote" },
     { label: "Quality & Cold Chain", href: "/quality" },
     { label: "Shipping Destinations", href: "/quality" },

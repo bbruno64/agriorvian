@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { BASE_URL } from "@/lib/site-url";
 import { commodities, commodityCategories } from "@/data/commodities";
+import { markets } from "@/data/markets";
 
 const lastModified = new Date("2026-09-29");
 
@@ -41,7 +42,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     )
   );
 
-  return [...staticPages, ...commodityPages, ...categoryPages];
+  const marketPages = markets.map((market) =>
+    page(`/market/${market.slug}`, 0.7, "monthly")
+  );
+
+  return [...staticPages, ...commodityPages, ...categoryPages, ...marketPages];
 }
 
 function slugifyCategory(category: string): string {
