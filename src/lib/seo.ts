@@ -238,6 +238,72 @@ export function marketFaqs(market: {
   };
 }
 
+export function tradeRouteSeo(
+  route: {
+    slug: string;
+    label: string;
+    title: string;
+    description: string;
+    country: string;
+    keywords: string[];
+  },
+  commodity: Commodity
+): Metadata {
+  const short = shortName(commodity);
+  return {
+    title: route.title,
+    description: route.description,
+    keywords: [
+      ...route.keywords,
+      `${route.label.toLowerCase()} import`,
+      `tanzania ${short.toLowerCase()} export ${route.country.toLowerCase()}`,
+      `fob dar es salaam cif ${route.country.toLowerCase()}`,
+      "tanzania agri exporter",
+    ],
+    alternates: { canonical: `${BASE_URL}/trade-route/${route.slug}` },
+    openGraph: {
+      title: `${route.label} — Tanzania Export | ${siteName}`,
+      description: route.description,
+      type: "website",
+      images: [{ url: `${BASE_URL}${commodity.image}`, alt: commodity.name }],
+    },
+  };
+}
+
+export function tradeRouteFaqs(
+  route: {
+    label: string;
+    country: string;
+    city: string;
+    destinationPort: string;
+    shipping: { port: string; route: string; transitDays: string };
+  },
+  commodity: Commodity
+): Array<{ q: string; a: string }> {
+  const short = shortName(commodity);
+  return [
+    {
+      q: `How long does shipping ${short.toLowerCase()} from Tanzania to ${route.country} take?`,
+      a: `${route.shipping.transitDays} on the ${route.shipping.route} route, departing the ${route.shipping.port}.`,
+    },
+    {
+      q: `What is the minimum order quantity for ${short} exported to ${route.country}?`,
+      a: `${commodity.minOrder}. Pricing is FOB Dar es Salaam or CIF ${route.destinationPort} — request a proforma quote and we'll confirm current availability and the best shipping line.`,
+    },
+    {
+      q: `Which specifications can I get for ${short} shipped to ${route.city}?`,
+      a: `${commodity.grades.join(", ")}. Core specs run ${commodity.specs
+        .slice(0, 3)
+        .map((s) => `${s.label} ${s.value}`)
+        .join("; ")} — counts, blends, and packing can be configured per order.`,
+    },
+    {
+      q: `What documents ship with a ${short} consignment to ${route.country}?`,
+      a: `${commodity.certifications.join(", ")}, plus bill of lading, packing list, and certificate of origin to support clearance at ${route.destinationPort}.`,
+    },
+  ];
+}
+
 export function itemListSchema<T extends { name: string; path: string }>(items: T[]) {
   return {
     "@context": "https://schema.org",

@@ -7,6 +7,7 @@ import { TrustBadges } from "@/components/home/trust-badges";
 import { liveMetrics } from "@/data/site";
 import { QualityCTABanner } from "@/components/home/quality-cta";
 import { HomeFaq } from "@/components/home/home-faq";
+import { TradeRouteStrip } from "@/components/home/trade-route-strip";
 import { JsonLd } from "@/components/jsonld";
 import { itemListSchema, faqSchema, homeFaqs } from "@/lib/seo";
 import { commodities } from "@/data/commodities";
@@ -29,6 +30,7 @@ export default function HomePage() {
       <FeaturedGrid />
       <QualityProcess />
       <Destinations />
+      <TradeRouteStrip />
       <HomeFaq />
       <TrustBadges />
       <QualityCTABanner />

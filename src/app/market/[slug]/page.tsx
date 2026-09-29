@@ -27,6 +27,7 @@ import { JsonLd } from "@/components/jsonld";
 import { CommodityLinkCard } from "@/components/commodities/commodity-link-card";
 import { Button } from "@/components/ui/button";
 import { CONTACT } from "@/data/site";
+import { routesForMarket } from "@/data/trade-routes";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -51,6 +52,7 @@ export default async function MarketPage({ params }: Props) {
   const faqs = marketFaqs(market);
   const items = commoditiesForMarket(market, commodities);
   const otherMarkets = markets.filter((m) => m.slug !== market.slug);
+  const routes = routesForMarket(market.slug);
 
   return (
     <div className="bg-[#fafaf8]">
@@ -150,6 +152,42 @@ export default async function MarketPage({ params }: Props) {
             <CommodityLinkCard key={c.id} commodity={c} />
           ))}
         </div>
+
+        {routes.length > 0 && (
+          <div className="mt-10">
+            <h3 className="text-xl font-bold text-slate-900">
+              Dedicated trade routes to {market.city}
+            </h3>
+            <p className="mt-1 text-slate-600">
+              Route-specific export pages for buyers importing to {market.city}:
+            </p>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {routes.map((route) => {
+                const commodityForRoute = commodities.find(
+                  (c) => c.id === route.commodityId
+                );
+                if (!commodityForRoute) return null;
+                return (
+                  <Link
+                    key={route.slug}
+                    href={`/trade-route/${route.slug}`}
+                    className="group rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-emerald-300 hover:shadow-sm"
+                  >
+                    <div className="text-[11px] font-semibold uppercase tracking-wide text-amber-600">
+                      {commodityForRoute.name}
+                    </div>
+                    <div className="mt-1 text-base font-bold text-slate-900 group-hover:text-emerald-800">
+                      {route.label}
+                    </div>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-800">
+                      Open route <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         <div className="mt-10 rounded-3xl bg-white p-8 shadow-sm">
           <h2 className="text-xl font-bold text-slate-900">

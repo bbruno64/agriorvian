@@ -68,7 +68,17 @@ function generateProformaId(): string {
   return `AO-RFQ-${year}-${rand}`;
 }
 
-function RfqWizardContent() {
+function RfqWizardContent({
+  defaultCommodityId,
+  defaultDestinationPort,
+  lockCommodity,
+  source,
+}: {
+  defaultCommodityId?: string;
+  defaultDestinationPort?: string;
+  lockCommodity?: boolean;
+  source?: string;
+}) {
   const searchParams = useSearchParams();
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
@@ -76,10 +86,11 @@ function RfqWizardContent() {
   const [rfqId, setRfqId] = useState("");
 
   const [form, setForm] = useState({
-    commodityId: searchParams.get("commodity") ?? "",
+    commodityId: defaultCommodityId ?? searchParams.get("commodity") ?? "",
     quantity: "",
     incoterm: "",
-    destinationPort: "",
+    destinationPort:
+      defaultDestinationPort ?? searchParams.get("port") ?? "",
     company: "",
     email: "",
     country: "",
@@ -139,7 +150,7 @@ function RfqWizardContent() {
       });
       if (!res.ok) throw new Error("send failed");
       trackEvent("generate_lead", {
-        source: "rfq_wizard",
+        source: source ?? "rfq_wizard",
         proforma_id: id,
         commodity: selectedCommodity?.name ?? form.commodityId,
         quantity: form.quantity,
@@ -224,10 +235,10 @@ function RfqWizardContent() {
     setSubmitted(false);
     setRfqId("");
     setForm({
-      commodityId: "",
+      commodityId: defaultCommodityId ?? "",
       quantity: "",
       incoterm: "",
-      destinationPort: "",
+      destinationPort: defaultDestinationPort ?? "",
       company: "",
       email: "",
       country: "",
@@ -308,21 +319,37 @@ function RfqWizardContent() {
                 </div>
                 <div className="space-y-2">
                   <Label>Commodity</Label>
-                  <Select
-                    value={form.commodityId}
-                    onValueChange={set("commodityId")}
-                  >
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select a commodity" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {commodities.map((c) => (
-                        <SelectItem key={c.id} value={c.id}>
-                          {c.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  {lockCommodity && defaultCommodityId && selectedCommodity ? (
+                    <div className="flex items-center justify-between rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3">
+                      <div>
+                        <div className="text-sm font-semibold text-emerald-900">
+                          {selectedCommodity.name}
+                        </div>
+                        <div className="text-xs text-emerald-700">
+                          {selectedCommodity.hsCode} · {selectedCommodity.minOrder}
+                        </div>
+                      </div>
+                      <span className="rounded-md bg-emerald-600 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-white">
+                        Pre-selected
+                      </span>
+                    </div>
+                  ) : (
+                    <Select
+                      value={form.commodityId}
+                      onValueChange={set("commodityId")}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select a commodity" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {commodities.map((c) => (
+                          <SelectItem key={c.id} value={c.id}>
+                            {c.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
                 </div>
                 <div className="space-y-2">
                   <Label>Quantity</Label>
@@ -551,7 +578,17 @@ function RfqWizardContent() {
   );
 }
 
-export function RfqWizard() {
+export function RfqWizard({
+  defaultCommodityId,
+  defaultDestinationPort,
+  lockCommodity,
+  source,
+}: {
+  defaultCommodityId?: string;
+  defaultDestinationPort?: string;
+  lockCommodity?: boolean;
+  source?: string;
+}) {
   return (
     <Suspense
       fallback={
@@ -560,7 +597,12 @@ export function RfqWizard() {
         </div>
       }
     >
-      <RfqWizardContent />
+      <RfqWizardContent
+        defaultCommodityId={defaultCommodityId}
+        defaultDestinationPort={defaultDestinationPort}
+        lockCommodity={lockCommodity}
+        source={source}
+      />
     </Suspense>
   );
 }

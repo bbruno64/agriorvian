@@ -30,6 +30,16 @@ const footerLinks = {
     { label: "Coffee — Arabica & Robusta", href: "/commodities/coffee" },
     { label: "Zanzibar Spices", href: "/commodities/zanzibar-spices" },
   ],
+  "Trade Routes": [
+    { label: "Cashew Nuts to Vietnam", href: "/trade-route/cashew-nuts-to-vietnam" },
+    { label: "Cashew Nuts to India", href: "/trade-route/cashew-nuts-to-india" },
+    { label: "Avocados to Netherlands", href: "/trade-route/avocados-to-netherlands" },
+    { label: "Coffee to Germany", href: "/trade-route/coffee-to-germany" },
+    { label: "Sesame to China", href: "/trade-route/sesame-to-china" },
+    { label: "Pulses to India", href: "/trade-route/pulses-to-india" },
+    { label: "Sesame to UAE", href: "/trade-route/sesame-to-uae" },
+    { label: "Maize to Kenya", href: "/trade-route/maize-to-kenya" },
+  ],
   Resources: [
     { label: "Commodities Catalog", href: "/commodities" },
     { label: "Export Markets", href: "/commodities" },
@@ -43,7 +53,7 @@ export function Footer() {
   return (
     <footer className="bg-[#0c2a1e] text-emerald-100/80">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-7">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2">
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-gradient">

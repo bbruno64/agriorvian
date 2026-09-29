@@ -31,6 +31,7 @@ import { CommodityLinkCard } from "@/components/commodities/commodity-link-card"
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CONTACT } from "@/data/site";
+import { routesForCommodity } from "@/data/trade-routes";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -56,6 +57,7 @@ export default async function CommodityDetailPage({ params }: Props) {
   const related = commodities.filter(
     (c) => c.category === commodity.category && c.id !== commodity.id
   );
+  const routes = routesForCommodity(commodity.id);
   const short = shortName(commodity);
 
   const infoBlocks = [
@@ -312,6 +314,44 @@ export default async function CommodityDetailPage({ params }: Props) {
           ))}
         </div>
       </section>
+
+      {routes.length > 0 && (
+        <section className="border-t border-slate-200 bg-[#fafaf8] py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+              Key import routes for {short.toLowerCase()}
+            </h2>
+            <p className="mt-2 text-slate-600">
+              Dedicated landing pages for the countries and ports that buy{" "}
+              {short.toLowerCase()} most — with route-specific specs, transit
+              times, and a quote form pre-filled for this export.
+            </p>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {routes.map((route) => (
+                <Link
+                  key={route.slug}
+                  href={`/trade-route/${route.slug}`}
+                  className="group rounded-2xl border border-slate-200 bg-white p-6 transition-colors hover:border-emerald-300 hover:shadow-sm"
+                >
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-amber-600">
+                    Tanzania → {route.country}
+                  </div>
+                  <div className="mt-1 text-lg font-bold text-slate-900 group-hover:text-emerald-800">
+                    {route.label}
+                  </div>
+                  <p className="mt-2 text-sm text-slate-600">
+                    {route.destinationPort} ·{" "}
+                    {route.shipping?.transitDays ?? "via Dar es Salaam"}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-800">
+                    View route <ArrowRight className="h-4 w-4" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="border-t border-slate-200 bg-white py-16">
