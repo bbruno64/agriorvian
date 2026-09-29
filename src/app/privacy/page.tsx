@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Privacy Policy for AgriOrvian, a division of Orvian Company Limited. How we handle the information you send us and your rights under the GDPR.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  robots: { index: true, follow: true },
 };
 
 const sections = [
@@ -18,8 +22,16 @@ const sections = [
   {
     title: "We do not collect your data automatically",
     body: [
-      `This website is a static brochure. It contains no cookies, no analytics trackers, no advertising pixels, and no embedded third-party scripts. We have no account system, no payment processing, and no marketing database built from this site.`,
-      `When you browse this website, no personal data is stored, transmitted, or shared with us or anyone else. There is therefore nothing to delete, because we receive nothing automatically.`,
+      `Apart from the Google Analytics described below, we have no account system, no payment processing, and no marketing database built from this site.`,
+      `When you browse this website, no personal data beyond the anonymized analytics events above is stored, transmitted, or shared with us or anyone else. There is therefore nothing to delete, because we receive nothing automatically.`,
+    ],
+  },
+  {
+    title: "Analytics (Google Analytics 4)",
+    body: [
+      `This website uses Google Analytics 4 (GA4), a privacy-focused analytics tool provided by Google. When you browse the site, GA4 may place a cookie on your device and record aggregate, de-identified events such as pages visited, approximate location, and actions taken (for example, opening a request form or clicking the WhatsApp button).`,
+      `We use this information only to understand how visitors find and use the site, so we can improve it and serve more relevant content. IP addresses are anonymized, no advertising or remarketing features are enabled, and analytics data is never used to build a profile of you for marketing. GA4 data is processed under Google's data protection terms and may be shared with Google for that purpose.`,
+      `You can opt out of Google Analytics by installing the official Google Analytics Opt-out Browser Add-on, available at tools.google.com/dlpage/gaoptout, or by blocking analytics cookies in your browser settings.`,
     ],
   },
   {

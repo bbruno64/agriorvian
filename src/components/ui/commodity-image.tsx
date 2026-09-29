@@ -26,8 +26,8 @@ export function CommodityImage({
       src={src}
       alt={alt}
       fill
-      unoptimized
-      sizes="(max-width: 768px) 100vw, 33vw"
+      sizes="(max-width: 768px) 100vw, 50vw"
+      quality={80}
       loading="lazy"
       onError={() => setFailed(true)}
       className={`object-cover ${className ?? ""}`}

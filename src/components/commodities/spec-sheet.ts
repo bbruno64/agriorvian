@@ -3,6 +3,7 @@
 import { jsPDF } from "jspdf";
 import type { Commodity } from "@/data/commodities";
 import { CONTACT } from "@/data/site";
+import { trackEvent } from "@/lib/analytics";
 
 const BRAND = "#103B2B";
 const ACCENT = "#D97706";
@@ -232,4 +233,8 @@ export async function downloadSpecSheet(commodity: Commodity): Promise<void> {
     .replace(/^-+|-+$/g, "")
     .toLowerCase()}-spec-sheet.pdf`;
   pdf.save(filename);
+  trackEvent("download_spec_sheet", {
+    commodity: commodity.name,
+    commodity_id: commodity.id,
+  });
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ArrowUpRight, MapPin, Ship, FileDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
@@ -44,18 +45,7 @@ export function CommodityCard({ commodity }: { commodity: Commodity }) {
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.3 }}
         whileHover={{ y: -4 }}
-        role="button"
-        tabIndex={0}
-        aria-haspopup="dialog"
-        aria-label={`View full specifications for ${commodity.name}`}
-        onClick={() => setOpen(true)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            setOpen(true);
-          }
-        }}
-        className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring hover:shadow-xl"
+        className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring hover:shadow-xl"
       >
         <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
           <CommodityImage
@@ -81,7 +71,12 @@ export function CommodityCard({ commodity }: { commodity: Commodity }) {
           </div>
 
           <h3 className="mt-3 text-lg font-bold text-slate-900">
-            {commodity.name}
+            <Link
+              href={`/commodities/${commodity.id}`}
+              className="hover:text-emerald-800"
+            >
+              {commodity.name}
+            </Link>
           </h3>
           <p className="mt-1 line-clamp-2 text-sm text-slate-500">
             {commodity.tagline}
@@ -112,12 +107,20 @@ export function CommodityCard({ commodity }: { commodity: Commodity }) {
               variant="ghost"
               size="sm"
               className="px-0 font-semibold text-emerald-700 hover:bg-transparent hover:text-emerald-900"
-              onClick={(e) => {
-                e.stopPropagation();
-                setOpen(true);
-              }}
+              onClick={() => setOpen(true)}
+              aria-haspopup="dialog"
             >
               View Full Specs <ArrowUpRight className="ml-1 h-4 w-4" />
+            </Button>
+            <Button
+              asChild
+              variant="ghost"
+              size="sm"
+              className="gap-1 px-2 text-[12px] text-slate-500 hover:bg-transparent hover:text-emerald-800"
+            >
+              <Link href={`/commodities/${commodity.id}`}>
+                Product Page <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
             </Button>
             <Button
               variant="ghost"

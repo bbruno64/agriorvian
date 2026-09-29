@@ -17,14 +17,23 @@ const footerLinks = {
     { label: "Contact", href: "/contact" },
   ],
   Products: [
-    { label: "Horticulture & Fresh Produce", href: "/commodities?category=Produce" },
-    { label: "Nuts & Oilseeds", href: "/commodities?category=Nuts%20%26%20Seeds" },
-    { label: "Fisheries & Aquaculture", href: "/commodities?category=Fisheries%20%26%20Aquaculture" },
-    { label: "Grains, Pulses & Spices", href: "/commodities?category=Grains%20%26%20Spices" },
+    { label: "Horticulture & Fresh Produce", href: "/commodities/category/produce" },
+    { label: "Nuts & Oilseeds", href: "/commodities/category/nuts-seeds" },
+    { label: "Fisheries & Aquaculture", href: "/commodities/category/fisheries-aquaculture" },
+    { label: "Grains, Pulses & Spices", href: "/commodities/category/grains-spices" },
+  ],
+  Commodities: [
+    { label: "Avocados from Tanzania", href: "/commodities/avocados" },
+    { label: "Raw Cashew Nuts (RCN)", href: "/commodities/cashew-rcn" },
+    { label: "Sesame Seeds", href: "/commodities/sesame" },
+    { label: "Nile Perch Fillets", href: "/commodities/nile-perch" },
+    { label: "Coffee — Arabica & Robusta", href: "/commodities/coffee" },
+    { label: "Zanzibar Spices", href: "/commodities/zanzibar-spices" },
   ],
   Resources: [
     { label: "Commodities Catalog", href: "/commodities" },
     { label: "Proforma Quote", href: "/quote" },
+    { label: "Quality & Cold Chain", href: "/quality" },
     { label: "Shipping Destinations", href: "/quality" },
   ],
 };
@@ -33,7 +42,7 @@ export function Footer() {
   return (
     <footer className="bg-[#0c2a1e] text-emerald-100/80">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2">
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-gradient">

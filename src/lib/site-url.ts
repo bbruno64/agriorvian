@@ -1,9 +1,9 @@
-import { headers } from "next/headers";
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.NEXT_PUBLIC_VERCEL_URL ??
+  "https://agriorvian.com"
+)
+  .replace(/^https?:\/\//, "")
+  .replace(/\/+$/, "");
 
-export async function getBaseUrl(): Promise<string> {
-  const header = await headers();
-  const host =
-    header.get("x-forwarded-host") ?? header.get("host") ?? "agriorvian.com";
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  return `${protocol}://${host}`;
-}
+export const BASE_URL = `https://${SITE_URL}`;

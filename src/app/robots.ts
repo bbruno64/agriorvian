@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
-import { getBaseUrl } from "@/lib/site-url";
+import { BASE_URL } from "@/lib/site-url";
 
-export default async function robots(): Promise<MetadataRoute.Robots> {
-  const baseUrl = await getBaseUrl();
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
@@ -10,7 +9,7 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
         allow: "/",
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
+    sitemap: `${BASE_URL}/sitemap.xml`,
+    host: BASE_URL,
   };
 }

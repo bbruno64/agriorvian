@@ -1,24 +1,34 @@
-"use client";
-
-import { useState, type ComponentType } from "react";
+import type { ComponentType } from "react";
+import type { Metadata } from "next";
+import Link from "next/link";
 import {
   MapPin,
   Phone,
   Mail,
   Clock,
-  Send,
   Building2,
-  Loader2,
   ExternalLink,
 } from "lucide-react";
-import { motion } from "framer-motion";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
+import { ContactForm } from "@/components/contact/contact-form";
+import { JsonLd } from "@/components/jsonld";
 import { CONTACT } from "@/data/site";
+import { BASE_URL } from "@/lib/site-url";
+
+export const metadata: Metadata = {
+  title: "Contact — Trade Desk, Dar es Salaam",
+  description:
+    "Contact AgriOrvian's live trade desk to buy agricultural commodities from Tanzania: WhatsApp, phone, email or web form. We respond within one business day.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact AgriOrvian — Trade Desk, Dar es Salaam",
+    description:
+      "WhatsApp, call or email our trade desk to source avocados, cashew, sesame, coffee and more from Tanzania.",
+    type: "website",
+  },
+};
 
 const contactChannels: Array<{
   icon: ComponentType<{ className?: string }>;
@@ -54,74 +64,36 @@ const contactChannels: Array<{
   },
 ];
 
-const initialForm = { name: "", email: "", subject: "", message: "" };
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness"],
+  name: "AgriOrvian",
+  parentOrganization: { "@type": "Organization", name: "Orvian Company Limited" },
+  url: `${BASE_URL}/contact`,
+  image: `${BASE_URL}/icon.svg`,
+  telephone: CONTACT.phone,
+  email: CONTACT.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Mbezi Makonde",
+    addressLocality: "Dar es Salaam",
+    addressCountry: "TZ",
+  },
+  openingHours: "Mo-Sa 08:00-18:00",
+  areaServed: "Worldwide",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: CONTACT.phone,
+    contactType: "sales",
+    availableLanguage: ["English", "Swahili"],
+  },
+};
 
 export default function ContactPage() {
-  const [form, setForm] = useState(initialForm);
-  const [status, setStatus] = useState<
-    "idle" | "submitting" | "success" | "error"
-  >("idle");
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (status === "submitting") return;
-
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      toast.error("Please complete all required fields", {
-        description: "Name, email, and message are needed to reach our trade desk.",
-      });
-      setStatus("error");
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      toast.error("Invalid email address", {
-        description: "Please enter a valid email so we can reply.",
-      });
-      setStatus("error");
-      return;
-    }
-
-    setStatus("submitting");
-    try {
-      const res = await fetch("https://formsubmit.co/ajax/a89243bcae5b4b1e3257bbfdb42b4b6f", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: "New inquiry from the AgriOrvian website",
-          name: form.name,
-          email: form.email,
-          subject: form.subject || "AgriOrvian website inquiry",
-          message: form.message,
-        }),
-      });
-      if (!res.ok) throw new Error("send failed");
-      setForm(initialForm);
-      setStatus("success");
-      toast.success("Message sent", {
-        description: `Your message is on its way to ${CONTACT.email}. We reply within one business day.`,
-      });
-    } catch {
-      setStatus("error");
-      toast.error("Could not send your message", {
-        description: `Check your connection and try again, or email us directly at ${CONTACT.email}.`,
-      });
-    }
-  };
-
-  const handleReset = () => {
-    setForm(initialForm);
-    setStatus("idle");
-  };
-
   return (
     <div className="bg-[#fafaf8]">
+      <JsonLd data={localBusinessSchema} />
+
       <section className="bg-emerald-gradient py-16 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold sm:text-4xl">
@@ -136,17 +108,13 @@ export default function ContactPage() {
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-3">
-          {contactChannels.map((c, i) => (
-            <motion.div
+          {contactChannels.map((c) => (
+            <div
               key={c.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
               className="rounded-2xl bg-white p-6 shadow-sm"
             >
               <c.icon className="h-7 w-7 text-amber-500" />
-              <h3 className="mt-3 font-semibold text-slate-900">{c.title}</h3>
+              <h2 className="mt-3 font-semibold text-slate-900">{c.title}</h2>
               <p className="mt-1 font-mono text-sm text-slate-700">{c.value}</p>
               <p className="text-xs text-slate-400">{c.note}</p>
               <a
@@ -157,113 +125,23 @@ export default function ContactPage() {
               >
                 {c.cta} <ExternalLink className="h-3.5 w-3.5" />
               </a>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-2">
-          {/* Form */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-8">
-            <h2 className="text-xl font-bold text-slate-900">Send a Message</h2>
-            <p className="mt-1 text-sm text-slate-500">
-              Our team typically responds within one business day.
-            </p>
-            {status === "success" ? (
-              <div className="mt-8 rounded-2xl bg-emerald-50 p-8 text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-gradient">
-                  <Mail className="h-7 w-7 text-white" />
-                </div>
-                <p className="mt-4 text-lg font-semibold text-emerald-900">
-                  Thanks {form.name || "for contacting us"} — your message has
-                  been sent
-                </p>
-                <p className="mt-1 text-sm text-emerald-700">
-                  Your message is on its way to {CONTACT.email}. A trade
-                  manager will respond within one business day.
-                </p>
-                <Button
-                  variant="outline"
-                  className="mt-6"
-                  onClick={handleReset}
-                >
-                  Send Another Message
-                </Button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      required
-                      autoComplete="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      required
-                      type="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="you@company.com"
-                      autoComplete="email"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input
-                    id="subject"
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    placeholder="e.g. Cashew RCN inquiry"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    required
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Tell us what you're sourcing and your target quantity…"
-                    className="min-h-[120px]"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="bg-emerald-gradient hover:opacity-90"
-                  disabled={status === "submitting"}
-                >
-                  {status === "submitting" ? (
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  ) : (
-                    <Send className="mr-2 h-4 w-4" />
-                  )}
-                  {status === "submitting" ? "Sending…" : "Send Message"}
-                </Button>
-              </form>
-            )}
-          </div>
+          <ContactForm />
 
-          {/* Map + hours */}
           <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white">
-            <div className="relative flex aspect-[4/3] items-center justify-center bg-emerald-gradient p-8 text-2xl font-bold text-white">
+            <div className="flex aspect-[4/3] items-center justify-center bg-emerald-gradient p-8 text-2xl font-bold text-white">
               <div className="relative text-center">
                 <MapPin className="mx-auto h-10 w-10 text-amber-300" />
                 <p className="mt-2">Dar es Salaam HQ</p>
                 <p className="mt-1 text-sm font-normal text-emerald-100/80">
-                  {CONTACT.address} · <a href={`mailto:${CONTACT.email}`} className="underline underline-offset-2 hover:text-white">{CONTACT.email}</a>
+                  {CONTACT.address} ·{" "}
+                  <Link href={`mailto:${CONTACT.email}`} className="underline underline-offset-2 hover:text-white">
+                    {CONTACT.email}
+                  </Link>
                 </p>
               </div>
             </div>

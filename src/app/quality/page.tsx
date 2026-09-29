@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: "Quality, Supply Chain & Cold Chain",
   description:
     "Inside AgriOrvian's farm-to-port quality program: laboratory testing, pesticide residue screening, cold-chain tracking, and full traceability.",
+  alternates: {
+    canonical: "/quality",
+  },
 };
 
 const labTests = [
@@ -54,7 +57,6 @@ export default function QualityPage() {
             src="/quality/hero-warehouse.jpg"
             alt=""
             fill
-            unoptimized
             className="object-cover"
           />
         </div>
@@ -104,7 +106,6 @@ export default function QualityPage() {
               src="/quality/grading.jpg"
               alt="Commodities being graded on the packing floor"
               fill
-              unoptimized
               className="object-cover"
             />
           </div>
@@ -149,7 +150,6 @@ export default function QualityPage() {
               src="/quality/reefer-truck.jpg"
               alt="Refrigerated truck for temperature-controlled export cargo"
               fill
-              unoptimized
               className="object-cover"
             />
           </div>

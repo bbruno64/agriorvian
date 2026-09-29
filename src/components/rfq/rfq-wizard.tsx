@@ -16,6 +16,7 @@ import {
 import { toast } from "sonner";
 import { commodities } from "@/data/commodities";
 import { CONTACT } from "@/data/site";
+import { trackEvent, trackWhatsAppClick } from "@/lib/analytics";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { Button } from "@/components/ui/button";
 import {
@@ -137,6 +138,15 @@ function RfqWizardContent() {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("send failed");
+      trackEvent("generate_lead", {
+        source: "rfq_wizard",
+        proforma_id: id,
+        commodity: selectedCommodity?.name ?? form.commodityId,
+        quantity: form.quantity,
+        incoterm: form.incoterm,
+        destination_port: form.destinationPort,
+        country: form.country,
+      });
       setRfqId(id);
       toast.success("Proforma request sent", {
         description: `Your request (${id}) has been emailed to export@agriorvian.com. A trade manager will respond within one business day.`,
@@ -187,6 +197,7 @@ function RfqWizardContent() {
   }, [rfqId, form, selectedCommodity]);
 
   const handleSendWhatsApp = () => {
+    trackWhatsAppClick("rfq_handoff");
     const encoded = encodeURIComponent(proformaMessage);
     window.open(
       `https://wa.me/${CONTACT.whatsappNumber}?text=${encoded}`,

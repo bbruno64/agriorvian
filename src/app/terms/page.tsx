@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Terms of Use",
   description:
     "Terms of use and disclaimer for the AgriOrvian website, a division of Orvian Company Limited.",
+  alternates: {
+    canonical: "/terms",
+  },
+  robots: { index: true, follow: true },
 };
 
 const sections = [

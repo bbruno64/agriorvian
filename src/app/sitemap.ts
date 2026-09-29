@@ -1,24 +1,52 @@
 import type { MetadataRoute } from "next";
-import { getBaseUrl } from "@/lib/site-url";
+import { BASE_URL } from "@/lib/site-url";
+import { commodities, commodityCategories } from "@/data/commodities";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = await getBaseUrl();
+const lastModified = new Date("2026-09-29");
 
-  const pages: Array<{ path: string; priority: number; changeFrequency: "yearly" | "monthly" | "weekly" }> = [
-    { path: "/", priority: 1, changeFrequency: "weekly" },
-    { path: "/about", priority: 0.9, changeFrequency: "monthly" },
-    { path: "/commodities", priority: 0.9, changeFrequency: "weekly" },
-    { path: "/quote", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/quality", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
-    { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
-  ];
-
-  return pages.map(({ path, priority, changeFrequency }) => ({
-    url: `${baseUrl}${path}`,
-    lastModified: new Date(),
+function page(
+  path: string,
+  priority: number,
+  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]
+): MetadataRoute.Sitemap[number] {
+  return {
+    url: `${BASE_URL}${path}`,
+    lastModified,
     changeFrequency,
     priority,
-  }));
+  };
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const staticPages = [
+    page("/", 1, "weekly"),
+    page("/commodities", 0.9, "weekly"),
+    page("/quote", 0.9, "monthly"),
+    page("/about", 0.8, "monthly"),
+    page("/quality", 0.8, "monthly"),
+    page("/contact", 0.8, "monthly"),
+    page("/privacy", 0.3, "yearly"),
+    page("/terms", 0.3, "yearly"),
+  ];
+
+  const commodityPages = commodities.map((c) =>
+    page(`/commodities/${c.id}`, 0.9, "weekly")
+  );
+
+  const categoryPages = commodityCategories.map((category) =>
+    page(
+      `/commodities/category/${slugifyCategory(category)}`,
+      0.7,
+      "monthly"
+    )
+  );
+
+  return [...staticPages, ...commodityPages, ...categoryPages];
+}
+
+function slugifyCategory(category: string): string {
+  return category
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 }

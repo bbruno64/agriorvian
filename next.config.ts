@@ -20,16 +20,16 @@ const securityHeaders = [
 // Static apps cannot use per-request CSP nonces: the nonce forces every page
 // to be dynamically rendered (server round-trip per navigation). Next.js
 // documents a static CSP instead. Here scripts are locked to same-origin plus
-// Next's inline bootstrap, and SRI hashes pin every bundled JS file. This
-// still blocks all third-party and remote script injection. Applied in
-// production only; dev Turbopack HMR requires eval, so dev serves no CSP.
+// Next's inline bootstrap and Google Analytics, and SRI hashes pin every
+// bundled JS file. Applied in production only; dev Turbopack HMR requires
+// eval, so dev serves no CSP.
 const cspHeader = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  "img-src 'self' data: blob: https://www.google-analytics.com",
   "font-src 'self'",
-  "connect-src 'self' https://formsubmit.co",
+  "connect-src 'self' https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.g.doubleclick.net",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

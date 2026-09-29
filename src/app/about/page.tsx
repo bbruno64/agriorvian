@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: "About AgriOrvian",
   description:
     "AgriOrvian is the export division of Orvian Company Limited, a BRELA-registered, TRA-compliant trading house in Dar es Salaam that supplies Tanzanian produce, cashew, coffee, spices, and lake fish to 24 destinations across four continents.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const pillars = [

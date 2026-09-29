@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Request a Proforma Quote",
   description:
     "Submit a streamlined two-step RFQ for AgriOrvian agricultural export commodities. Get a proforma tracking ID and a tailored quote from our trade desk.",
+  alternates: {
+    canonical: "/quote",
+  },
 };
 
 export default function QuotePage() {

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 const TRADE_MANAGER_NAME = "AgriOrvian Trade Desk";
 const WHATSAPP_NUMBER = "255714454774";
@@ -15,6 +16,7 @@ export function WhatsAppWidget() {
   const [open, setOpen] = useState(false);
 
   const handleOpenChat = () => {
+    trackWhatsAppClick("floating_widget");
     const encoded = encodeURIComponent(defaultMessage);
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`,

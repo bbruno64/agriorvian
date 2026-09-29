@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, FileText, Sparkles, Globe2, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,13 +11,15 @@ export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-[#103B2B]">
       <div className="absolute inset-0" aria-hidden="true">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={HERO_IMAGE}
-          alt=""
+          alt="Agricultural commodities ready for export from Tanzania"
           aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          quality={75}
           className="h-full w-full object-cover"
-          loading="eager"
           onError={(e) => {
             (e.currentTarget as HTMLImageElement).style.display = "none";
           }}
